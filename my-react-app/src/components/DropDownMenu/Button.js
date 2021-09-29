@@ -17,4 +17,4 @@ function DropDownMenu() {
     )
 }
 
-{export DropDownMenu}
+export {DropDownMenu}
