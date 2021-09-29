@@ -5,7 +5,7 @@ function DropDownMenu() {
 
     return (
         <form>
-            <h1> You have selected your hillwalking experience at {dropdown} </h1>
+            <h1> This is the value of the useState {dropdown} </h1>
             <select value={dropdown} onChange={(e)=>{setDropDown(e.target.value)}}>
                 <option value="Beginner">Beginner</option>
                 <option value="Advanced Beginner">Advanced Beginner</option>
@@ -15,5 +15,3 @@ function DropDownMenu() {
         </form>
     )
 }
-
-export default DropDownMenu
