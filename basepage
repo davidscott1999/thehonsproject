@@ -1,6 +1,0 @@
-<div class="m-form-row">
-	<label class="a-label" for="...">...</label>
-	<div class="m-form-row__content">
-		<input type="..." id="..." name="..." class="a-textbox [ Modifier ]" />
-	</div>
-</div>
