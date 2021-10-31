@@ -54,6 +54,7 @@
     "@testing-library/react": "^12.1.2",
     "autoprefixer": "^9.8.8",
     "postcss": "^7.0.39",
+    "stylelint-config-recommended": "^6.0.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.2.17"
   }
 }
