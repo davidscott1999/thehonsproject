@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Navbar = () => {
   return (
     <nav
-      className="flex justify-between items-center h-16 bg-gray-50 text-black text-lg
-    relative shadow-sm font-mono"
+      className="flex justify-between items-center h-16 bg-gray-200 text-black text-lg
+    relative shadow-sm font-family: ui-serif"
       role="navigation"
     >
-      <Link className="pl-4" to="/home">
+      <Link className="pl-4 hover:text-gray-900" to="/home">
         Scottish Munro Bagging
       </Link>
       <div className="px-4 cursor-pointer md:hidden">
@@ -28,16 +28,16 @@ const Navbar = () => {
         </svg>
       </div>
       <div className="pr-8 md:block hidden">
-        <Link className="p-4" to="/munros">
+        <Link className="p-4 hover:text-gray-900" to="/munros">
           Munros
         </Link>
-        <Link className="p-4" to="/logs">
+        <Link className="p-4 hover:text-gray-900" to="/logs">
           My Logs
         </Link>
-        <Link className="p-4" to="/safety">
+        <Link className="p-4 hover:text-gray-900" to="/safety">
           Mountain Safety
         </Link>
-        <Link className="p-4" to="/account">
+        <Link className="p-4 hover:text-gray-900" to="/account">
           Account
         </Link>
       </div>
@@ -45,4 +45,4 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+export { Navbar };
