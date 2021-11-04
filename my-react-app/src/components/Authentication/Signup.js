@@ -7,17 +7,20 @@ function Signup() {
   const emailRef = useRef();
   const passwordRef = useRef();
   const passwordConfirmRef = useRef();
-  const { signup } = useAuth();
+  const { signup, currentUser } = useAuth();
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
 
+  //prevent form refreshing
   async function handleSubmit(e) {
     e.preventDefault();
 
+    //error handling to check if passwords match
     if (passwordRef.current.value !== passwordConfirmRef.current.value) {
       return setError("Passwords do not match");
     }
 
+    //error handling for creating an account
     try {
       setError("");
       setLoading(true);
@@ -33,6 +36,7 @@ function Signup() {
       <Card>
         <Card.Body>
           <h2 className="text-center">Sign Up</h2>
+          {currentUser && currentUser.email}
           {error && <Alert variant="danger">{error}</Alert>}
           <Form onSubmit={handleSubmit}>
             <Form.Group id="email">
