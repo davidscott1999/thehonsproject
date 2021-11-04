@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
 import { AuthProvider } from "../../contexts/AuthContext";
-import Signup from "../Authentication/Signup";
+import { Signup } from "../Authentication/Signup";
 import "./App.css";
 
 function App() {
@@ -18,4 +18,4 @@ function App() {
   );
 }
 
-export default App;
+export { App };
