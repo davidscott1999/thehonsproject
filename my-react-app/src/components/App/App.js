@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Dashboard } from "../Dashboard/Dashboard";
 import { Login } from "../Authentication/Login/Login";
 import { PasswordReset } from "../Authentication/PasswordReset/PasswordReset";
-import { Account } from "../Account/Account";
+import { Account } from "../Authentication/Account/Account";
 
 function App() {
   return (
