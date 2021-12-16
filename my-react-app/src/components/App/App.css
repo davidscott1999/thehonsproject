@@ -1,3 +1,44 @@
 body {
-  background-color: #708090;
+  @apply bg-white;
+  @apply text-gray-800;
+}
+
+a {
+  @apply text-black;
+  @apply font-bold;
+  @apply duration-1000;
+}
+
+a:hover,
+a:visited,
+a:active {
+  @apply text-gray-800;
+}
+
+.max-w-desktop {
+  @apply lg:max-w-7xl;
+  @apply mx-auto;
+  @apply p-8;
+}
+
+p {
+  @apply mt-4;
+  @apply leading-7;
+}
+
+p:first-of-type {
+  @apply mt-0;
+  @apply leading-7;
+}
+
+p:first-of-type {
+  @apply mt-0;
+}
+
+.munroDetails {
+  @apply absolute;
+  @apply z-50;
+  @apply top-8;
+  @apply left-1/2;
+  margin-left: -608px;
 }
