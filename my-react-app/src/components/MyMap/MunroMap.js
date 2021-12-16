@@ -1,16 +1,18 @@
+import '../MyMap/Map.css';
+
 import {
   useEffect,
   useRef,
   useState,
 } from 'react';
 
-import tt from 'tomtom-international/web-sdk-maps';
+import tt from '@tomtom-international/web-sdk-maps';
 
-import MunroDetails from '../MunroDetails/MunroDetails';
+import munroData from '../data/munroData';
 
-const munroMap = ({ className, onPopupClick }) => {
-  const mapElement = useRef();
+const Map = ({ className, onPopupClick }) => {
   const [map, setMap] = useState({});
+  const mapElement = useRef();
 
   useEffect(() => {
     const SCOTLAND = [-6, 57];
@@ -28,7 +30,7 @@ const munroMap = ({ className, onPopupClick }) => {
     const llb = new tt.LngLatBounds(southWest, northWest);
     map.setMaxBounds(llb);
 
-    //Open Weather Map API Source for Clouds 
+    //Open Weather Map API Source for Clouds
     const cloudSource = {
       type: "raster",
       titles: [
@@ -39,8 +41,8 @@ const munroMap = ({ className, onPopupClick }) => {
       MAX_ZOOM: 12,
       attribution: "OpenWeatherMap.org",
     };
-    
-    //Open Weather Map API Source for Precipitation  
+
+    //Open Weather Map API Source for Precipitation
     const rainSource = {
       type: "raster",
       titles: [
@@ -52,7 +54,7 @@ const munroMap = ({ className, onPopupClick }) => {
       attribution: "OpenWeatherMap.org",
     };
 
-    //Tile Layer for Clouds  
+    //Tile Layer for Clouds
     const cloudLayer = {
       id: "cloud_layer",
       type: "raster",
@@ -60,7 +62,7 @@ const munroMap = ({ className, onPopupClick }) => {
       layout: { visibility: "visible" },
     };
 
-    //Tile Layer for Rain 
+    //Tile Layer for Rain
     const rainLayer = {
       id: "rain_layer",
       type: "raster",
@@ -68,6 +70,7 @@ const munroMap = ({ className, onPopupClick }) => {
       layout: { visibility: "visible" },
     };
 
+    //Load Source & Layer for TomTom Map
     map.on("load", function () {
       map.addSource("cloud_source", cloudSource);
       map.addSource("cloud_source", rainSource);
@@ -80,8 +83,9 @@ const munroMap = ({ className, onPopupClick }) => {
 
     setMap(map);
 
+    //Munro Marker
     const addMarker = ({ className, latlng_lat, latlng_lng, name, smcid }) => {
-      const markerElement = document.createElement("div")
+      const markerElement = document.createElement("div");
       markerElement.className = className;
 
       const htmlContent = document.createElement("div");
@@ -90,23 +94,24 @@ const munroMap = ({ className, onPopupClick }) => {
       new tt.Marker({
         element: markerElement,
       })
-      .setLngLat([latlng_lng, latlng_lat])
-      .setPopup(
-        new tt.Popup()
-          .setOffSet({ bottom: [0, -25]})
-          .setDomContent(htmlContent)
-          .on("open,", () => onPopupClick(smcid))
-      )
-      .addTo(Map);
+        .setLngLat([latlng_lng, latlng_lat])
+        .setPopup(
+          new tt.Popup()
+            .setOffSet({ bottom: [0, -25] })
+            .setDomContent(htmlContent)
+            .on("open,", () => onPopupClick(smcid))
+        )
+        .addTo(Map);
     };
 
-    MunroDetails.forEach{(munro) =>
-    addMarker({ className: "marker", ...munro })
-  );
+    munroData.forEach((munroData) =>
+      addMarker({ className: "marker", ...munroData })
+    );
 
     return () => map.remove();
   }, [onPopupClick]);
 
-  return <>{map && <div ref={mapElement} className={className} />}</>};
+  return <>{map && <div ref={mapElement} className={className} />}</>;
+};
 
-export { munroMap };
+export default Map;

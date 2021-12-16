@@ -1,1 +1,41 @@
 @import "@tomtom-international/web-sdk-maps";
+
+.map {
+  height: 100%;
+}
+
+.marker-munro:after {
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid red;
+}
+
+.marker-munro-done {
+  height: 25px;
+  width: 25px;
+  position: relative;
+}
+
+.marker-munro-done:after {
+  top: 5px;
+  left: 5px;
+  position: absolute;
+  content: "";
+  border-left: 7px solid transparent;
+  border-right: 7px solid transparent;
+  border-bottom: 12px solid green;
+}
+
+.max-w-desktop {
+  @apply lg:max-w-7xl;
+  @apply mx-auto;
+  @apply p-8;
+}
+
+.popup-container {
+  @apply padding: 0 15px 0 5px;
+}
