@@ -1,7 +1,25 @@
 @import "@tomtom-international/web-sdk-maps";
 
 .map {
-  height: 100%;
+  height: 800px;
+}
+
+.mapboxgl-cltr-top-right,
+.mapboxgl-cltr-bottom-right {
+  right: 50%;
+  margin-right: -610px;
+}
+
+.mapboxgl-cltr-top-right {
+  top: 20px;
+}
+
+@media screen and (max-width: 1280px) {
+  .mapboxgl-cltr-top-right,
+  .mapboxgl-cltr-bottom-right {
+    right: 0;
+    margin-right: 32px;
+  }
 }
 
 .marker-munro:after {
@@ -28,14 +46,4 @@
   border-left: 7px solid transparent;
   border-right: 7px solid transparent;
   border-bottom: 12px solid green;
-}
-
-.max-w-desktop {
-  @apply lg:max-w-7xl;
-  @apply mx-auto;
-  @apply p-8;
-}
-
-.popup-container {
-  @apply padding: 0 15px 0 5px;
 }

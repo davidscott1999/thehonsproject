@@ -3,6 +3,7 @@ import './App.css';
 import { useState } from 'react';
 
 import Footer from '../Footer/Footer';
+import Map from '../MyMap/Map';
 import Navbar from '../Navbar/Navbar';
 
 function App() {
@@ -13,10 +14,10 @@ function App() {
       <div className="w-full">
         <Navbar />
         <div className="relative">
-          <munroMap className="map" onPopupClick={setMunro} />
+          <Map className="map" onPopupClick={setMunro} />
           {munro && <munroData className="munroData" munroId={munro} />}
         </div>
-        <Footer />
+        <Footer className="footer" />
       </div>
     </>
   );
