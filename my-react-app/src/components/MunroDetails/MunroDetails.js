@@ -1,9 +1,11 @@
 import React from 'react';
 
+import munroData from '../Data/munroData';
+
 const MunroDetails = ({ className, munroId }) => {
   if (!munroId) return;
 
-  const munro = MunroDetails.find((munro) => munro.smcid === munroId);
+  const munro = munroData.find((munro) => munro.smcid === munroId);
   const { name, height, meaning, latlng_lat, latlng_lng, smcid, region } =
     munro;
 
