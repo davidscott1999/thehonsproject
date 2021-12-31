@@ -8,6 +8,8 @@ import {
 
 import tt from '@tomtom-international/web-sdk-maps';
 
+import munroData from '../Data/munroData';
+
 const Map = ({ className, onPopupClick }) => {
   const [map, setMap] = useState({});
   const mapElement = useRef();
@@ -91,13 +93,12 @@ const Map = ({ className, onPopupClick }) => {
 
       new tt.Marker({
         element: markerElement,
-      })
-        .setLngLat([latlng_lng, latlng_lat])
-        //Set pop up / create modal
-        .addTo(Map);
+      }).setLngLat([latlng_lng, latlng_lat]);
     };
 
-    //add marker
+    munroData.forEach((munroData) =>
+      addMarker({ className: "marker", ...munroData })
+    );
 
     return () => map.remove();
   }, [onPopupClick]);
