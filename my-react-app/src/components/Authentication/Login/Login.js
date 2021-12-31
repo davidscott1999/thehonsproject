@@ -1,10 +1,11 @@
-import React, { useRef, useState } from "react";
-import { Form, Button, Card, Alert } from "react-bootstrap";
-import "bootstrap/dist/css/bootstrap.min.css";
-import { useAuth } from "../../../contexts/AuthContext";
-import { Link } from "react-router-dom";
+import React, {
+  useRef,
+  useState,
+} from 'react';
 
-function Login() {
+import { useAuth } from '../../../contexts/AuthContext';
+
+const Login = () => {
   const emailRef = useRef();
   const passwordRef = useRef();
   const Login = useAuth();
@@ -28,33 +29,56 @@ function Login() {
 
   return (
     <>
-      <Card>
-        <Card.Body>
-          <h2 className="text-center">Login</h2>
-          {error && <Alert variant="danger">{error}</Alert>}
-          <Form onSubmit={handleSubmit}>
-            <Form.Group id="email">
-              <Form.Label>Email</Form.Label>
-              <Form.Control type="email" ref={emailRef} required />
-            </Form.Group>
-            <Form.Group id="password">
-              <Form.Label>Password</Form.Label>
-              <Form.Control type="password" ref={passwordRef} required />
-            </Form.Group>
-            <Button disabled={loading} className="w-100" type="submit">
-              Login
-            </Button>
-          </Form>
-          <div class="w-100 text-centre mt-3">
-            <Link to="/reset-password">Forgot Password?</Link>
+      <section
+        className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
+        style={{
+          backgroundImage: "url(media/loginBackground.jpg)",
+          backgroundColor: "transparent",
+        }}
+      >
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 flex items-center justify-center">
+          <div className="lg:w-3/6 lg:pr-0 pr-0">
+            <h1 className="font-large text-5xl text-white">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            </h1>
+            <p className="leading-relaxed text-white mb-2">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+            </p>
           </div>
-        </Card.Body>
-      </Card>
-      <div className="w-100 text-center mt-2">
-        Need an account? <Link to="/signup">Sign up</Link>
-      </div>
+          <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-50 p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0 rounded-md">
+            <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-2.5 w-full mt-10 lg:mt-0 rounded-md">
+              <div className="relative mb-4">
+                <label
+                  for="email"
+                  className="leading-7 text-sm text-gray-600"
+                ></label>
+                Email:
+                <input type="email" ref={emailRef} required />
+              </div>
+              <div className="relative mb-4">
+                <label
+                  for="password"
+                  className="leading-7 text-sm text-gray-600"
+                ></label>
+                Password:
+                <input type="password" ref={passwordRef} required />
+              </div>
+            </div>
+            <button
+              disabled={loading}
+              className="text-white bg-indigo-500 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg mr-2"
+              type="submit"
+              onSubmit={handleSubmit}
+            >
+              Login
+            </button>
+            {error && <alert variant="danger">{error}</alert>}
+          </div>
+        </div>
+      </section>
     </>
   );
-}
+};
 
 export { Login };
