@@ -82,12 +82,12 @@ const Login = () => {
               Login
             </button>
             {error && <alert variant="danger">{error}</alert>}
-            <a className="text-center mt-2" href="/forgotpassword">
-              Forgot Password?
-            </a>
-            <a className="text-center mt-2" href="/signup">
-              Not registered for an account?
-            </a>
+            <div className="text-center mt-3">
+              <a href="/forgotpassword">Forgot Password?</a>
+            </div>
+            <div className="text-center mt-3">
+              <a href="/signup">Not registered for an account?</a>
+            </div>
           </div>
         </div>
       </section>

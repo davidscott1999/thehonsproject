@@ -31,6 +31,7 @@ function Signup() {
       setLoading(true);
       await signup(emailRef.current.value, passwordRef.current.value);
       history.push();
+      console.log(emailRef.current.value, passwordRef.current.value + "test");
     } catch {
       setError("Failed to create an account");
     }
@@ -85,13 +86,13 @@ function Signup() {
             </div>
             <div className="relative mb-4">
               <label
-                for="passwordConfirm"
+                for="password"
                 className="leading-7 text-sm text-gray-600"
               ></label>
               Confirm Password:
               <input
                 className="w-full bg-white rounded-md border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-sm outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-150 ease-in-out"
-                type="passwordConfirm"
+                type="password"
                 ref={passwordConfirmRef}
                 required
               />
@@ -99,15 +100,15 @@ function Signup() {
             <button
               disabled={loading}
               className="text-white bg-indigo-500 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg mr-2"
-              type="signUp"
+              type="button"
               onClick={handleSubmit}
             >
-              Login
+              Register
             </button>
             {error && <alert variant="danger">{error}</alert>}
-            <a className="text-center mt-2" href="/login">
-              Already have an account?
-            </a>
+            <div className="text-center mt-3">
+              <a href="/login">Already have an account?</a>
+            </div>
           </div>
         </div>
       </section>
