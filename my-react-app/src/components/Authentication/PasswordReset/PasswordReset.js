@@ -47,17 +47,29 @@ function PasswordReset() {
               eiusmod tempor incididunt ut labore et dolore magna aliqua.
             </p>
           </div>
-          <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-50 p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0 rounded-md">
-            <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-2.5 w-full mt-10 lg:mt-0 rounded-md">
-              <div className="relative mb-4">
-                <label
-                  for="email"
-                  className="leading-7 text-sm text-gray-600"
-                ></label>
-                Email:
-                <input type="email" ref={emailRef} required />
-              </div>
+          <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-2.5 w-full mt-10 lg:mt-0 rounded-md">
+            <div className="relative mb-4">
+              <label
+                for="email"
+                className="leading-7 text-sm text-gray-600"
+              ></label>
+              Email:
+              <input
+                className="w-full bg-white rounded-md border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-sm outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-150 ease-in-out "
+                type="email"
+                ref={emailRef}
+                required
+              />
             </div>
+            <button
+              disabled={loading}
+              className="text-white bg-indigo-500 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg ml-2"
+              type="submit"
+              onSubmit={handleSubmit}
+            >
+              Reset Password
+            </button>
+            {error && <alert variant="danger">{error}</alert>}
           </div>
         </div>
       </section>

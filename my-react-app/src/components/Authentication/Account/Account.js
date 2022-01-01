@@ -1,9 +1,15 @@
-import Button from "@restart/ui/esm/Button";
-import React, { useState } from "react";
-import { Alert, Card } from "react-bootstrap";
-import { useHistory } from "react-router";
-import { Link } from "react-router-dom";
-import { useAuth } from "../../../contexts/AuthContext";
+import React, { useState } from 'react';
+
+import {
+  Alert,
+  Card,
+} from 'react-bootstrap';
+import { useHistory } from 'react-router';
+import { Link } from 'react-router-dom';
+
+import Button from '@restart/ui/esm/Button';
+
+import { useAuth } from '../../../contexts/AuthContext';
 
 function Account() {
   const [error, setError] = useState("");
