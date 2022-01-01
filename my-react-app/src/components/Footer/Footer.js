@@ -1,10 +1,10 @@
 import React from 'react';
 
 const Footer = () => (
-  <footer className="flex flex-col justify-between fixed bottom-0 w-full h-62">
-    <div class="w-full bg-purple-500 text-white object-bottom">
+  <footer className="flex flex-col static bottom-0">
+    <div class="w-full bg-green-600 text-white object-bottom">
       <div class="xl:px-40 pb-12 lg:px-20 md:px-10 sm:px-5 px-5">
-        <div className="w-full pt-12 flex flex-col sm:flex-row space-y-2 justify-start">
+        <div className="w-full pt-10 flex flex-col sm:flex-row space-y-2 justify-start">
           <div class="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
             <img
               className="object-scale-down h-32 w-70 object-left-top"
@@ -16,35 +16,48 @@ const Footer = () => (
           <div className="w-full sm:w-1/5 flex flex-col space-y-4">
             <ul>
               <li className="opacity-60">
-                <a href="/contact-us">Contact us</a>
+                <a href="/">App</a>
               </li>
               <li className="opacity-60">
                 <a href="/cookie-policy">Cookie Policy</a>
               </li>
               <li className="opacity-60">
-                <a href="/account">My Account</a>
+                <a href="/privacy-policy">Privacy Policy</a>
               </li>
             </ul>
           </div>
           <div class="w-full sm:w-1/5 flex flex-col space-y-4">
             <ul>
               <li className="opacity-60">
-                <a href="/contact-us">My Logs</a>
+                <a href="/">Account</a>
               </li>
               <li className="opacity-60">
-                <a href="/cookie-policy">Munro Safety</a>
+                <a href="/manage-my-account">Manage my account</a>
               </li>
               <li className="opacity-60">
-                <a href="/account">FAQ's</a>
+                <a href="/faqs">FAQ's</a>
               </li>
             </ul>
           </div>
           <div class="w-full sm:w-1/5 pt-6 flex items-end mb-1">
             <div class="flex flex-row space-x-4">
-              <i class="fab fa-facebook-f"></i>
-              <i class="fab fa-twitter"></i>
-              <i class="fab fa-instagram"></i>
-              <i class="fab fa-google"></i>
+              <ul>
+                <li class="fab fa-facebook-f">
+                  <a href="https://www.facebook.com/scottishmountainrescue/">
+                    Scottish Mountain Rescue
+                  </a>
+                </li>
+                <li class="fab fa-instagram-f">
+                  <a href="https://www.instagram.com/visitscotland/?hl=en">
+                    @visitscotland
+                  </a>
+                </li>
+                <li class="fab fa-twitter-f">
+                  <a href="https://twitter.com/metofficeuk?lang=en">
+                    Met Office
+                  </a>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
