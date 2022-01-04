@@ -137,4 +137,4 @@ const Map = ({ className, onPopupClick }) => {
   return <>{map && <div ref={mapElement} className={className} />}</>;
 };
 
-export default Map;
+export { Map };
