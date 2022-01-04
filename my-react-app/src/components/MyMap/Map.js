@@ -23,7 +23,7 @@ const Map = ({ className, onPopupClick }) => {
       container: mapElement.current,
       center: SCOTLAND,
       scrollZoom: false,
-      zoom: 6.5,
+      zoom: 6,
     });
 
     const southWest = new tt.LngLat(-11, 50);
