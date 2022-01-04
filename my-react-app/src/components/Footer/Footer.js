@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const Footer = () => (
   <footer className="flex flex-col static bottom-0">
     <div class="w-full bg-green-600 text-white object-bottom">
@@ -29,10 +31,10 @@ const Footer = () => (
           <div class="w-full sm:w-1/5 flex flex-col space-y-4">
             <ul>
               <li className="opacity-60">
-                <a href="/">Account</a>
+                <Link to="/account">Account</Link>
               </li>
               <li className="opacity-60">
-                <a href="/manage-my-account">Manage my account</a>
+                <a href="https://www.walkhighlands.co.uk/">Walk Highlands</a>
               </li>
               <li className="opacity-60">
                 <a href="/faqs">FAQ's</a>

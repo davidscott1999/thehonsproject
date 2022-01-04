@@ -9,8 +9,10 @@ import {
 } from 'react-router-dom';
 
 import { AuthProvider } from '../../contexts/AuthContext';
+import { UpdateEmail } from '../Authentication/Account/updateEmail';
+import { UpdatePassword } from '../Authentication/Account/updatePassword';
 import { Login } from '../Authentication/Login/Login';
-import { PasswordReset } from '../Authentication/PasswordReset/PasswordReset';
+import { ResetPassword } from '../Authentication/PasswordReset/PasswordReset';
 import { Signup } from '../Authentication/Signup';
 import Footer from '../Footer/Footer';
 import { Map } from '../MyMap/Map';
@@ -34,7 +36,9 @@ function App() {
             </Route>
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
-            <Route path="/password" component={PasswordReset} />
+            <Route path="/resetpassword" component={ResetPassword} />
+            <Route path="/details" component={UpdateEmail} />
+            <Route path="/changepassword" component={UpdatePassword} />
           </Switch>
           <Footer />
         </div>
