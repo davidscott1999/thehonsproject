@@ -22,13 +22,13 @@ function App() {
         <Navbar />
 
         <Switch>
-          <Route exact path="/" component={Register} />
-          <Route path="/home">
+          <Route exact path="/">
             <div className="relative">
               <Map className="map" onPopupClick={setMunro} />
               {munro && <munroData className="munroData" munroId={munro} />}
             </div>
           </Route>
+          <Route path="/register" component={Register} />
         </Switch>
         <Footer />
       </div>
