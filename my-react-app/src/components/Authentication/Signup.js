@@ -7,19 +7,46 @@ import {
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const validate = Yup.object().shape({
-  firstName: Yup.string().required("Required"),
-  surname: Yup.string().required("Required"),
-  email: Yup.string().email("Invalid Email").required("Email is required"),
-  password: Yup.string()
-    .min(10, "Must be 10 characters or more")
-    .required("Password Required"),
-  confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Password must match")
-    .required("Confirm password is required"),
-});
+import { useAuth } from '../../contexts/AuthContext';
 
 const Signup = () => {
+  const { signup } = useAuth();
+
+  // Added this to handle the submit of the form
+  const handleSubmit = (values) => {
+    // If you submit your form and check the console you will see all of the form properties you have access to
+    console.log(values);
+
+    // We can destructure the ones we need from the values object
+    const { email, password } = values;
+
+    // These can then be passed to your signup function
+    signup(email, password);
+
+    // // signup is a promise so you could do something like this to handle any errors ...
+    // signup(email, password)
+    // .then(() => {
+    //   // update state variable, maybe you want to display a toast message to say signup successful or something like that
+    //   console.log('Success');
+    // })
+    // .catch((error) => {
+    //   // maybe you want to redirect to an error page or display a toast message to say there has been a problem
+    //   console.log(error);
+    // });
+  };
+
+  const validate = Yup.object().shape({
+    firstName: Yup.string().required("Required"),
+    surname: Yup.string().required("Required"),
+    email: Yup.string().email("Invalid Email").required("Email is required"),
+    password: Yup.string()
+      .min(10, "Must be 10 characters or more")
+      .required("Password Required"),
+    confirmPassword: Yup.string()
+      .oneOf([Yup.ref("password"), null], "Password must match")
+      .required("Confirm password is required"),
+  });
+
   return (
     <section
       className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
@@ -49,8 +76,9 @@ const Signup = () => {
               confirmPassword: "",
             }}
             validationSchema={validate}
+            // Changed this to use the handleSubmit function above
             onSubmit={(values, { setSubmitting }) => {
-              console.log(values);
+              handleSubmit(values);
             }}
           >
             {({ isSubmitting, isValid }) => (
@@ -99,9 +127,10 @@ const Signup = () => {
                 </div>
 
                 <label htmlFor="password">Confirm Password:</label>
+                {/* Fixed an issue here with the id and name of confirmPassword which was stopping values being submitted */}
                 <Field
-                  id="confirmPassword"
-                  name="ConfirmPassword"
+                  id="ConfirmPassword"
+                  name="confirmPassword"
                   type="password"
                   className="w-full bg-white rounded-md border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-sm outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-150 ease-in-out"
                 />
@@ -109,9 +138,10 @@ const Signup = () => {
                   <ErrorMessage name="password" />
                 </div>
                 <button
-                  className="text-white bg-gray-600 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
+                  className={`text-white bg-gray-600 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full ${
+                    isValid && "bg-green-800"
+                  }`}
                   type="submit"
-                  disabled={!isValid}
                 >
                   Register
                 </button>
