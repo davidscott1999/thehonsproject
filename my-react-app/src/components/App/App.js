@@ -2,8 +2,8 @@ import './App.css';
 
 import { useState } from 'react';
 
+import { Login } from '../Authentication/Login/Login';
 import Footer from '../Footer/Footer';
-import Map from '../MyMap/Map';
 import Navbar from '../Navbar/Navbar';
 
 function App() {
@@ -13,11 +13,10 @@ function App() {
     <>
       <div className="w-full">
         <Navbar />
-        <div className="relative">
-          <Map className="map" onPopupClick={setMunro} />
-          {munro && <munroData className="munroData" munroId={munro} />}
+        <div>
+          <Login />
         </div>
-        <Footer className="footer" />
+        <Footer />
       </div>
     </>
   );
