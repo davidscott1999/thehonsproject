@@ -74,7 +74,7 @@ const Login = () => {
             )}
           </Formik>
           <div className="text-center mt-3">
-            <Link to="/forgotPassword">Forgot Password?</Link>
+            <Link to="/password">Forgot Password?</Link>
           </div>
           <div className="text-center mt-3">
             <Link to="/signup">Not registered for an account?</Link>

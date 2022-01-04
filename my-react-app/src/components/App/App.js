@@ -8,7 +8,9 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import { Register } from '../Authentication/Signup';
+import { Login } from '../Authentication/Login/Login';
+import { PasswordReset } from '../Authentication/PasswordReset/PasswordReset';
+import { Signup } from '../Authentication/Signup';
 import Footer from '../Footer/Footer';
 import { Map } from '../MyMap/Map';
 import Navbar from '../Navbar/Navbar';
@@ -28,7 +30,9 @@ function App() {
               {munro && <munroData className="munroData" munroId={munro} />}
             </div>
           </Route>
-          <Route path="/register" component={Register} />
+          <Route path="/login" component={Login} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/password" component={PasswordReset} />
         </Switch>
         <Footer />
       </div>

@@ -12,9 +12,9 @@ const Navbar = () => {
       <div>
         <img alt="munroLogo" src="media/MunroLogo.PNG" />
       </div>
-      <Link className="pl-4 hover:text-gray-900" to="/home">
+      <h1 className="pl-4 text-blue-900 text-2xl font-bold">
         Scottish Munro Bagging
-      </Link>
+      </h1>
       <div className="px-4 cursor-pointer md:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -32,6 +32,9 @@ const Navbar = () => {
         </svg>
       </div>
       <div className="pr-8 md:block hidden">
+        <Link className="p-4 hover:text-gray-900" to="/">
+          Home
+        </Link>
         <Link className="p-4 hover:text-gray-900" to="/munros">
           Munros
         </Link>
@@ -41,7 +44,7 @@ const Navbar = () => {
         <Link className="p-4 hover:text-gray-900" to="/safety">
           Mountain Safety
         </Link>
-        <Link className="p-4 hover:text-gray-900" to="/account">
+        <Link className="p-4 hover:text-gray-900" to="/login">
           Account
         </Link>
       </div>

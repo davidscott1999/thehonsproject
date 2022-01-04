@@ -19,7 +19,7 @@ const validate = Yup.object().shape({
     .required("Confirm password is required"),
 });
 
-const Register = () => {
+const Signup = () => {
   return (
     <section
       className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
@@ -119,7 +119,7 @@ const Register = () => {
             )}
           </Formik>
           <div className="text-center mt-3">
-            <Link href="/login">Already have an account?</Link>
+            <Link to="/login">Already have an account?</Link>
           </div>
         </div>
       </div>
@@ -127,4 +127,4 @@ const Register = () => {
   );
 };
 
-export { Register };
+export { Signup };

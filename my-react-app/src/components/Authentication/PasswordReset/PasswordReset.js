@@ -39,12 +39,10 @@ function PasswordReset() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 flex items-center justify-center">
           <div className="lg:w-3/6 lg:pr-0 pr-0">
-            <h1 className="font-large text-5xl text-white">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-            </h1>
+            <h1 className="font-large text-5xl text-white">Forgot password?</h1>
             <p className="leading-relaxed text-white mb-2">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              Enter your email, and we will send you an email which you can
+              reset your password from.
             </p>
           </div>
           <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-2.5 w-full mt-10 lg:mt-0 rounded-md">
