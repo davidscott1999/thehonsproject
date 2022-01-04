@@ -5,12 +5,12 @@ import { Link } from 'react-router-dom';
 const Navbar = () => {
   return (
     <nav
-      className="flex justify-between items-center h-21 bg-gray-200 text-black text-lg
+      className="flex justify-between items-center h-21 bg-white text-black text-lg
     relative shadow-sm font-family: ui-serif"
       role="navigation"
     >
       <div>
-        <img src="media/MunroLogo.PNG" alt="" />
+        <img alt="munroLogo" src="media/MunroLogo.PNG" />
       </div>
       <Link className="pl-4 hover:text-gray-900" to="/home">
         Scottish Munro Bagging
