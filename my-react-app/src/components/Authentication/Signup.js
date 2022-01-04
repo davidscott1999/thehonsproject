@@ -127,7 +127,6 @@ const Signup = () => {
                 </div>
 
                 <label htmlFor="password">Confirm Password:</label>
-                {/* Fixed an issue here with the id and name of confirmPassword which was stopping values being submitted */}
                 <Field
                   id="ConfirmPassword"
                   name="confirmPassword"

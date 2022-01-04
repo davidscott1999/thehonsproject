@@ -7,14 +7,26 @@ import {
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-const validateLogin = Yup.object().shape({
-  email: Yup.string().email("Invalid Email").required("Email is required"),
-  password: Yup.string()
-    .min(10, "Must be 10 characters or more")
-    .required("Password Required"),
-});
+import { useAuth } from '../../../contexts/AuthContext';
 
 const Login = () => {
+  const { login } = useAuth();
+
+  const handleSubmit = (values) => {
+    console.log(values);
+
+    const { email, password } = values;
+
+    login(email, password);
+  };
+
+  const validateLogin = Yup.object().shape({
+    email: Yup.string().email("Invalid Email").required("Email is required"),
+    password: Yup.string()
+      .min(10, "Must be 10 characters or more")
+      .required("Password Required"),
+  });
+
   return (
     <section
       className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
@@ -37,7 +49,7 @@ const Login = () => {
             }}
             validationSchema={validateLogin}
             onSubmit={(values, { setSubmitting }) => {
-              console.log(values);
+              handleSubmit(values);
             }}
           >
             {({ isSubmitting, isValid }) => (
@@ -64,8 +76,9 @@ const Login = () => {
                   <ErrorMessage name="password" />
                 </div>
                 <button
-                  disabled={!isValid}
-                  className="text-white text-white bg-gray-600 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
+                  className={`text-white bg-gray-600 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full ${
+                    isValid && "bg-green-800"
+                  }`}
                   type="submit"
                 >
                   Login
