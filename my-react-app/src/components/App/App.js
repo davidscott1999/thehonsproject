@@ -2,7 +2,7 @@ import './App.css';
 
 import { useState } from 'react';
 
-import { Login } from '../Authentication/Login/Login';
+import { Register } from '../Authentication/Signup';
 import Footer from '../Footer/Footer';
 import Navbar from '../Navbar/Navbar';
 
@@ -14,7 +14,7 @@ function App() {
       <div className="w-full">
         <Navbar />
         <div>
-          <Login />
+          <Register />
         </div>
         <Footer />
       </div>
