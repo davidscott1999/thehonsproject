@@ -23,9 +23,13 @@ function App() {
 
         <Switch>
           <Route exact path="/" component={Register} />
-          <Route path="/home" component={Map} />
+          <Route path="/home">
+            <div className="relative">
+              <Map className="map" onPopupClick={setMunro} />
+              {munro && <munroData className="munroData" munroId={munro} />}
+            </div>
+          </Route>
         </Switch>
-
         <Footer />
       </div>
     </Router>
