@@ -8,7 +8,7 @@ import {
 
 import tt from '@tomtom-international/web-sdk-maps';
 
-import munroData from '../Data/munroData';
+import munroData from '../data/munroData';
 
 const Map = ({ className, onPopupClick }) => {
   const [map, setMap] = useState({});
