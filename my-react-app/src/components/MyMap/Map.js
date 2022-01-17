@@ -11,6 +11,7 @@ import tt from '@tomtom-international/web-sdk-maps';
 import munroData from '../Data/munroData';
 
 const Map = ({ className, onPopupClick }) => {
+  const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY;
   const [map, setMap] = useState({});
   const mapElement = useRef();
 
@@ -22,9 +23,14 @@ const Map = ({ className, onPopupClick }) => {
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
       center: SCOTLAND,
-      scrollZoom: false,
+      scrollZoom: true,
       zoom: 6,
     });
+
+    // Slow down trackpad zoom
+    map.scrollZoom.setZoomRate(1 / 150);
+    // Slow down mouse wheel zoom
+    map.scrollZoom.setWheelZoomRate(1 / 450);
 
     const southWest = new tt.LngLat(-11, 50);
     const northWest = new tt.LngLat(2, 61);
@@ -34,37 +40,37 @@ const Map = ({ className, onPopupClick }) => {
     //Open Weather Map API Source for Clouds
     const cloudSource = {
       type: "raster",
-      titles: [
-        "https://tile.openweathermap.org/map/clouds_new/{z}/{x}/{y}.png?appid=process.env.REACT_APP_OPEN_WEATHER_KEY",
+      tiles: [
+        `http://maps.openweathermap.org/maps/2.0/weather/CL/{z}/{x}/{y}?appid=${apiKey}`,
       ],
       tileSize: 256,
       minZoom: 0,
       MAX_ZOOM: 12,
-      attribution: "OpenWeatherMap",
+      attribution: "OpenWeatherMap,Org",
     };
 
-    //Open Weather Map API Source for Precipitation
+    //Open Weather Map API Source for Accumulated precipitation - rain
     const rainSource = {
       type: "raster",
-      titles: [
-        "https://tile.openweathermap.org/map/precipitation_new/{z}/{x}/{y}.png?appid=process.env.REACT_APP_OPEN_WEATHER_KEY",
+      tiles: [
+        `http://maps.openweathermap.org/maps/2.0/weather/PAR0/{z}/{x}/{y}?appid=${apiKey}`,
       ],
       tileSize: 256,
       minZoom: 0,
       MAX_ZOOM: 12,
-      attribution: "OpenWeatherMap",
+      attribution: "OpenWeatherMap.Org",
     };
 
-    //Open Weather Map API Source for Wind
-    const windSource = {
+    //Open Weather Map API Source for Accumulated precipitation - snow
+    const snowSource = {
       type: "raster",
-      titles: [
-        "https://tile.openweathermap.org/map/wind_new/{z}/{x}/{y}.png?appid=process.env.REACT_APP_OPEN_WEATHER_KEY",
+      tiles: [
+        `http://maps.openweathermap.org/maps/2.0/weather/PA0/{z}/{x}/{y}?appid=${apiKey}`,
       ],
       tileSize: 256,
       minZoom: 0,
       MAX_ZOOM: 12,
-      attribution: "OpenWeatherMap",
+      attribution: "OpenWeatherMap.Org",
     };
 
     //Tile Layer for Clouds
@@ -83,25 +89,26 @@ const Map = ({ className, onPopupClick }) => {
       layout: { visibility: "visible" },
     };
 
-    //Tile Layer for Wind
-    const windLayer = {
-      id: "wind_layer",
+    //Tile Layer for Snow
+    const snowLayer = {
+      id: "snow_layer",
       type: "raster",
-      source: "wind_source",
+      source: "snow_source",
       layout: { visibility: "visible" },
     };
 
     //Load Source & Layer from open weather map for TomTom Map
     map.on("load", function () {
-      map.addSource("cloud_source", cloudSource);
       map.addSource("rain_source", rainSource);
-      map.addSource("wind_source", windSource);
+      map.addSource("cloud_source", cloudSource);
+      map.addSource("snow_source", snowSource);
 
       map.addLayer(cloudLayer);
       map.addLayer(rainLayer);
-      map.addLayer(windLayer);
+      map.addLayer(snowLayer);
     });
 
+    map.addControl(new tt.FullscreenControl());
     map.addControl(new tt.NavigationControl());
 
     setMap(map);
@@ -115,6 +122,7 @@ const Map = ({ className, onPopupClick }) => {
       htmlContent.innerHTML = `div class="popup-container">div class="name">${name}</div></div>`;
 
       new tt.Marker({
+        draggable: false,
         element: markerElement,
       })
         .setLngLat([latlng_lng, latlng_lat])
@@ -127,12 +135,12 @@ const Map = ({ className, onPopupClick }) => {
         .addTo(map);
     };
 
-    munroData.forEach((munroData) =>
-      addMarker({ className: "marker", ...munroData })
-    );
+    munroData.forEach((munroData) => {
+      addMarker({ className: "marker", ...munroData });
+    });
 
     return () => map.remove();
-  }, [onPopupClick]);
+  }, [apiKey, onPopupClick]);
 
   return <>{map && <div ref={mapElement} className={className} />}</>;
 };
