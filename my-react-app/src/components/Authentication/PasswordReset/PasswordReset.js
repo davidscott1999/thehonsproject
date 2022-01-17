@@ -29,6 +29,7 @@ const ResetPassword = () => {
       })
       .catch((error) => {
         //   // maybe you want to redirect to an error page or display a toast message to say there has been a problem
+
         console.log(error);
       });
   };
@@ -57,7 +58,7 @@ const ResetPassword = () => {
               }}
               validationSchema={validate}
               // Changed this to use the handleSubmit function above
-              onSubmit={(values, { setSubmitting }) => {
+              onSubmit={(values, { isSubmitting, setSubmitting }) => {
                 handlePasswordReset(values);
               }}
             >
@@ -78,6 +79,7 @@ const ResetPassword = () => {
                       isValid && "bg-green-800"
                     }`}
                     type="submit"
+                    disabled={isSubmitting}
                   >
                     Reset Password
                   </button>

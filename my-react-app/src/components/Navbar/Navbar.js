@@ -12,13 +12,11 @@ const Navbar = () => {
       <div>
         <img alt="munroLogo" src="media/MunroLogo.PNG" />
       </div>
-      <h1 className="pl-4 text-blue-900 text-2xl font-bold">
-        Scottish Munro Bagging
-      </h1>
+      <h1 className="pl-4 text-blue-900 text-2xl font-bold">Munro Baggers</h1>
       <div className="px-4 cursor-pointer md:hidden">
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6"
+          className="h-6 w-6"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
