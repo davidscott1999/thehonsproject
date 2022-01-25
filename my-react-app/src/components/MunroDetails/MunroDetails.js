@@ -20,6 +20,15 @@ const MunroDetails = ({ className, munroId }) => {
           <li>Height: {height} m </li>
         </ul>
         <Forecast longitude={latlng_lng} latitude={latlng_lat} />
+        <div>
+          <button
+            className="text-white bg-blue-600 rounded-md border-0 mt-3 ml-1 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
+            type="submit"
+            onClick={() => (window.location.href = "/munro")}
+          >
+            Find out more
+          </button>
+        </div>
       </div>
     </div>
   );
