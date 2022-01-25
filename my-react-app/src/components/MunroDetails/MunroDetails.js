@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import munroData from '../Data/munroData';
 import { Forecast } from '../Weather/Weather';
 
@@ -21,13 +23,10 @@ const MunroDetails = ({ className, munroId }) => {
         </ul>
         <Forecast longitude={latlng_lng} latitude={latlng_lat} />
         <div>
-          <button
-            className="text-white bg-blue-600 rounded-md border-0 mt-3 ml-1 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
-            type="submit"
-            onClick={() => (window.location.href = "/munro")}
-          >
-            Find out more
-          </button>
+          <Link
+            className="text-white bg-blue-600 rounded-md border-0 mt-3 ml-1 py-2
+            px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
+          />
         </div>
       </div>
     </div>
