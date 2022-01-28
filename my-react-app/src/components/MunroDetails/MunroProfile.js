@@ -4,8 +4,6 @@ import munroData from '../Data/munroData';
 import { Forecast } from '../Weather/Weather';
 
 const MunroProfile = ({ className, munroId }) => {
-  if (!munroId) return;
-
   const munro = munroData.find((munro) => munro.smcid === munroId);
   const { name, height, meaning, latlng_lat, latlng_lng, smcid, region } =
     munro;
