@@ -24,7 +24,7 @@ const MunroDetails = ({ className, munroId }) => {
         <Forecast longitude={latlng_lng} latitude={latlng_lat} />
         <div>
           <Link
-            to={`munros/${munroId}`}
+            to={`munro/${munroId}`}
             className="text-white bg-blue-600 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full flex space-x-4 space-x-reverse mr-2 text-justify"
           >
             Find out more
