@@ -10,7 +10,10 @@ const Navbar = () => {
       role="navigation"
     >
       <div>
-        <img alt="munroLogo" src="media/MunroLogo.PNG" />
+        <img
+          alt="munroLogo"
+          src="https://firebasestorage.googleapis.com/v0/b/auth-development-980d7.appspot.com/o/MunroLogo.PNG?alt=media&token=214bfa0f-67f7-48d0-bcfe-fbafcb61916b"
+        />
       </div>
       <h1 className="pl-4 text-blue-900 text-2xl font-bold">Munro Baggers</h1>
       <div className="px-4 cursor-pointer md:hidden">

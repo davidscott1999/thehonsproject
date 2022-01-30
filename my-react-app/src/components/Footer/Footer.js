@@ -10,7 +10,7 @@ const Footer = () => (
           <div className="w-full sm:w-2/5 pr-6 flex flex-col space-y-4">
             <img
               className="object-scale-down h-32 w-70 object-left-top"
-              src="media/cardImage_1.jpg"
+              src="https://firebasestorage.googleapis.com/v0/b/auth-development-980d7.appspot.com/o/footerImg.jpg?alt=media&token=47f6ee15-32f0-439c-8fbe-d65d284b8788"
               alt="Munro Logo"
             />
             <p className="opacity-60">Eat. Sleep. Bag Munros. Repeat</p>
