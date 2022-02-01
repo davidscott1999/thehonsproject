@@ -1,6 +1,11 @@
 import React from 'react';
 
-const MunroList = () => {
+import munroData from '../Data/munroData';
+
+const MunroList = ({ munroId }) => {
+  const munro = munroData.find((munro) => munro.smcid);
+  const { name, height } = munro;
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -29,13 +34,13 @@ const MunroList = () => {
                     <div className="flex items-center">
                       <div className="ml-4">
                         <div className="text-sm font-medium text-gray-900">
-                          Ben Nevis
+                          {name}
                         </div>
                       </div>
                     </div>
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                    1937m
+                    {height}m
                   </td>
                 </tr>
               </tbody>

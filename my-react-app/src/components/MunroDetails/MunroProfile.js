@@ -1,37 +1,77 @@
 import React from 'react';
 
-import { useParams } from 'react-router-dom';
-
 import munroData from '../Data/munroData';
-import { Forecast } from '../Weather/Weather';
+import { Modal } from '../Modal/Modal';
+import { Map } from '../MyMap/Map';
 
-const MunroProfile = ({ className }) => {
-  let { munroId } = useParams();
+const MunroProfile = ({
+  match: {
+    params: { munroId },
+  },
+}) => {
   const munro = munroData.find((munro) => munro.smcid === munroId);
   const { name, height, meaning, latlng_lat, latlng_lng, smcid, region } =
     munro;
 
   return (
-    <div className={className}>
-      <section className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat">
-        <div className="bg-gray-600 bg-opacity-80 rounded-md p-6 w-70 text-white">
-          <h1 className="text-lg font-bold">{name}</h1>
-          <p className="italic">{meaning}</p>
-        </div>
-        <div className="bg-gray-600 bg-opacity-80 rounded-md p-6 w-70 text-white">
-          <ul className="text-sm">
-            <li>smcID:{smcid}</li>
-            <li>Region:{region}</li>
-            <li>Height:{height}m</li>
-            <li>Latitude:{latlng_lat}</li>
-            <li>Longitude:{latlng_lng}</li>
-          </ul>
-          <div>
-            <Forecast longitude={latlng_lng} latitude={latlng_lat}></Forecast>
+    <div className="bg-white shadow overflow-hidden sm:rounded-lg">
+      <div className="px-4 py-5 sm:px-6">
+        <h1 className="text-lg leading-6 font-medium text-gray-900">{name}</h1>
+        <p className="mt-1 max-w-2xl text-sm text-gray-500">{meaning}</p>
+      </div>
+      <div>
+        <button
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex flex-col mb-2 ml-10"
+          onClick={Modal}
+        >
+          Add to logs
+        </button>
+      </div>
+      <div className="border-t border-gray-200">
+        <dl>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">SMC ID</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              {smcid}
+            </dd>
           </div>
-        </div>
-      </section>
-      )}
+          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Height</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              {height}
+            </dd>
+          </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Region</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              {region}
+            </dd>
+          </div>
+          <div className="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Latitude</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              {latlng_lat}
+            </dd>
+          </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">Longitude</dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              {latlng_lng}
+            </dd>
+          </div>
+          <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+            <dt className="text-sm font-medium text-gray-500">
+              Difficult Rating
+            </dt>
+            <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+              Medium
+            </dd>
+          </div>
+        </dl>
+      </div>
+      <div className="relative munroProfile">
+        <Map className="map" />
+      </div>
     </div>
   );
 };

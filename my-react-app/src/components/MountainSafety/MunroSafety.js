@@ -83,12 +83,13 @@ const MunroSafety = ({ className }) => {
             been proven to enhance our well-being, but we must be prepared as
             the mountain environment can change very quickly. Find out more
             <a href="https://www.scottishmountainrescue.org/mountain-safety-advice">
+              {" "}
               here
             </a>
             .
           </p>
         </Cards>
-        <Cards heading="Mountaineering Scotland" image={safetyAndAdviceCardRef}>
+        <Cards heading="Mountaineering Scotland" image={safteySkillsCardRef}>
           <p>
             The essential skills you should master, including navigation and a
             knowledge of the effects of weather and conditions, along with ways
@@ -96,7 +97,10 @@ const MunroSafety = ({ className }) => {
             skills, it may be that one of our courses can fill in the gaps in
             your knowledge or help you hone and refresh existing skills. Start
             your learning
-            <a href="https://www.mountaineering.scot/safety-and-skills">here</a>
+            <a href="https://www.mountaineering.scot/safety-and-skills">
+              {" "}
+              here
+            </a>
             .
           </p>
         </Cards>
@@ -108,21 +112,12 @@ const MunroSafety = ({ className }) => {
             into the wilderness. This will ensure you won't need an emergency
             search and rescue. Find out more
             <a href="https://www.scotland.police.uk/advice-and-information/hill-walking/">
+              {" "}
               here
             </a>
             .
           </p>
         </Cards>
-      </div>
-      <div>
-        <section
-          className="w-full text-gray-900 py-36 bg-center bg-cover bg-no-repeat"
-          style={{
-            backgroundImage:
-              "url('https://firebasestorage.googleapis.com/v0/b/auth-development-980d7.appspot.com/o/ThinkWINTERBanner.png?alt=media&token=fe06b9f7-cac5-4f19-92af-bdee5e0907a8')",
-            backgroundColor: "transparent",
-          }}
-        ></section>
       </div>
     </div>
   );

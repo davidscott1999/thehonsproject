@@ -1,6 +1,21 @@
 import React from 'react';
 
-const Logs = () => {
+import {
+  collection,
+  getDocs,
+} from 'firebase/firestore';
+import { Link } from 'react-router-dom';
+
+import { db } from '../../firebase';
+
+const ViewLogs = () => {
+  async function readData() {
+    const querySnapshot = await getDocs(collection(db, "logs"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()}`);
+    });
+  }
+
   return (
     <div className="flex flex-col">
       <div className="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
@@ -67,9 +82,12 @@ const Logs = () => {
                   </td>
                 </tr>
                 <div>
-                  <button className="text-white bg-blue-600 rounded-md border-0 py-2 px-4 ml-2 focus:outline-none hover:bg-indigo-600 text-lg w-full flex space-x-2 space-x-reverse mr-2 text-justify">
-                    + Add Log
-                  </button>
+                  <Link
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex flex-col mb-2 mt-2 ml-10"
+                    to="/add-logs"
+                  >
+                    Add to logs
+                  </Link>
                 </div>
               </tbody>
             </table>
@@ -80,4 +98,4 @@ const Logs = () => {
   );
 };
 
-export { Logs };
+export { ViewLogs };
