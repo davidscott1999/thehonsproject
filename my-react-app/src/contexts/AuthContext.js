@@ -33,7 +33,7 @@ function AuthProvider({ children }) {
   }
 
   function logout() {
-    return signOut();
+    return signOut(auth);
   }
 
   function resetPassword(email) {
