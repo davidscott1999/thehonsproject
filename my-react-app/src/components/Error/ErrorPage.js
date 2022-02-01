@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 const ErrorPage = ({ error }) => {
   return (
     <>
@@ -11,24 +13,26 @@ const ErrorPage = ({ error }) => {
           backgroundColor: "transparent",
         }}
       >
-        <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-blue-800 p-8 flex flex-col lg:ml-2.5 mt-10 w-full lg:mt-0 rounded-md">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-4 flex items-center justify-center">
-            <div className="lg:w-3/6 lg:pr-0 pr-0 mt-10">
-              <h1 className="font-large text-5xl text-white">
-                Something went wrong...
-              </h1>
-              <h2 className="leading-relaxed text-white text-4x1 font-xl mt-2">
-                {error}
-              </h2>
+        <div>
+          <div>
+            <h1 className="font-large text-5xl text-white">
+              Something went wrong...
+            </h1>
+            <div>
+              <p className="leading-relaxed text-white text-4x1 font-medium mb-4 m-3">
+                Please try again, or please contact us from the main dashboard.
+              </p>
             </div>
           </div>
-          <button
-            className="text-white bg-gray-800 rounded-md border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"
-            type="navigation"
-            onclick="history.back()"
-          >
-            Go Back
-          </button>
+          <div className="mt-5 ml-3">
+            <Link
+              className="bg-blue-500 hover:bg-blue-700 text-white text-center font-bold py-2 px-4 rounded-full"
+              type="navigation"
+              to="/"
+            >
+              Go Back
+            </Link>
+          </div>
         </div>
       </section>
     </>
