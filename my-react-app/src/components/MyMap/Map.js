@@ -119,7 +119,7 @@ const Map = ({ className, onPopupClick }) => {
       markerElement.className = className;
 
       const htmlContent = document.createElement("div");
-      htmlContent.innerHTML = `div class="popup-container">div class="name">${name}</div></div>`;
+      htmlContent.innerHTML = `<div className="popup-container popup-container .name"><div className="name">${name}</div></div>`;
 
       new tt.Marker({
         draggable: false,
@@ -135,9 +135,9 @@ const Map = ({ className, onPopupClick }) => {
         .addTo(map);
     };
 
-    munroData.forEach((munroData) => {
-      addMarker({ className: "marker", ...munroData });
-    });
+    munroData.forEach((munroData) =>
+      addMarker({ className: "marker", ...munroData })
+    );
 
     return () => map.remove();
   }, [apiKey, onPopupClick]);

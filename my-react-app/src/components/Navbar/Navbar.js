@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Link } from 'react-router-dom';
 
 const Navbar = () => {
@@ -39,13 +37,13 @@ const Navbar = () => {
         <Link className="p-4 hover:text-gray-900" to="/munros">
           Munros
         </Link>
-        <Link className="p-4 hover:text-gray-900" to="/logs">
+        <Link className="p-4 hover:text-gray-900" to="/view-logs">
           My Logs
         </Link>
         <Link className="p-4 hover:text-gray-900" to="/safety">
           Mountain Safety
         </Link>
-        <Link className="p-4 hover:text-gray-900" to="/login">
+        <Link className="p-4 hover:text-gray-900" to="/account">
           Account
         </Link>
       </div>

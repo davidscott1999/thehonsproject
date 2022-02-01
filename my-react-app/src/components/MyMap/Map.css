@@ -5,6 +5,19 @@
   position: relative;
 }
 
+.munroProfile {
+  height: 400px;
+  position: relative;
+}
+
+.popup-container {
+  padding: 0 15px 0 5px;
+}
+
+.popup-container .name {
+  font-weight: bold;
+}
+
 .mapboxgl-cltr-top-right,
 .mapboxgl-cltr-bottom-right {
   right: 50%;
