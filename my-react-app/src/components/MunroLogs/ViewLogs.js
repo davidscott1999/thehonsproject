@@ -5,6 +5,8 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  where,
+  query,
 } from 'firebase/firestore';
 import { useHistory } from 'react-router-dom';
 
@@ -20,9 +22,16 @@ const ViewLogs = () => {
   const [completedMunros, setCompletedMunros] = useState([]);
 
   const completedMunrosCollection = collection(db, "completedMunros");
+  
+  const queryRef = query(collection(db, "completedMunros"), where("uid", "==", uid));
 
   const getMunros = async () => {
-    const data = await getDocs(completedMunrosCollection);
+    const data = await getDocs(queryRef);
+    data.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+     console.log(doc);
+     console.log(doc.id, " => ", doc.data());
+  });
     setCompletedMunros(data.docs.map((values) => ({ uid, ...values.data() })));
   };
 
