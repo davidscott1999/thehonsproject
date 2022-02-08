@@ -10,21 +10,33 @@ import tt from '@tomtom-international/web-sdk-maps';
 
 import munroData from '../Data/munroData';
 
-const Map = ({ className, onPopupClick }) => {
+const Map = ({ className, onPopupClick, featuredMunroId }) => {
+  const SCOTLAND = [-6, 57];
+
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY;
   const [map, setMap] = useState({});
+  const [mapCenter, setMapCenter] = useState(SCOTLAND);
+  const [mapZoom, setMapZoom] = useState(6);
   const mapElement = useRef();
 
   useEffect(() => {
-    const SCOTLAND = [-6, 57];
+    if (!featuredMunroId) return;
 
+    const munro = munroData.find((munro) => munro.smcid === featuredMunroId);
+    setMapCenter([munro.latlng_lng, munro.latlng_lat]);
+    setMapZoom(12);
+  }, [featuredMunroId]);
+
+  console.log(mapCenter);
+
+  useEffect(() => {
     //Initializes TomTom map with an id set to the 'map' and style, zoom and center position
     const map = tt.map({
       key: process.env.REACT_APP_TOM_TOM_API_KEY,
       container: mapElement.current,
-      center: SCOTLAND,
+      center: mapCenter,
       scrollZoom: true,
-      zoom: 6,
+      zoom: mapZoom,
     });
 
     // Slow down trackpad zoom
@@ -135,12 +147,15 @@ const Map = ({ className, onPopupClick }) => {
         .addTo(map);
     };
 
-    munroData.forEach((munroData) =>
-      addMarker({ className: "marker", ...munroData })
-    );
+    munroData.forEach((munro) => {
+      const className = completedMunros.includes(munro.id)
+        ? "marker-munro-done"
+        : "marker-munro";
+      addMarker({ className: className, ...munro });
+    });
 
     return () => map.remove();
-  }, [apiKey, onPopupClick]);
+  }, [apiKey, mapCenter, mapZoom, onPopupClick]);
 
   return <>{map && <div ref={mapElement} className={className} />}</>;
 };
