@@ -19,9 +19,7 @@ const ViewLogs = () => {
   const { uid } = currentUser;
   const [completedMunros, setCompletedMunros] = useState([]);
 
-  const completedMunrosCollection = collection(db, "completedMunros")
-    .where("uid", "==", uid)
-    .get();
+  const completedMunrosCollection = collection(db, "completedMunros");
 
   const getMunros = async () => {
     const data = await getDocs(completedMunrosCollection);
