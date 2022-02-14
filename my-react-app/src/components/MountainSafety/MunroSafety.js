@@ -36,7 +36,7 @@ const MunroSafety = ({ className }) => {
           </h1>
         </div>
       </section>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto mt-3 mb-3 ml-2 mr-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto mt-3 mb-3 ml-2 mr-2">
         <Cards heading="Mountain Weather Info Service" image={infoServiceRef}>
           <p>
             The Mountain Weather Information Service provides weather forecasts

@@ -1,7 +1,8 @@
 import React from 'react';
 
+import { Link } from 'react-router-dom';
+
 import munroData from '../Data/munroData';
-import { Modal } from '../Modal/Modal';
 import { Map } from '../MyMap/Map';
 
 const MunroProfile = ({
@@ -20,14 +21,14 @@ const MunroProfile = ({
         <p className="mt-1 max-w-2xl text-sm text-gray-500">{meaning}</p>
       </div>
       <div>
-        <button
-          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex flex-col mb-2 ml-10"
-          onClick={Modal}
+        <Link
+          className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full flex-col ml-5"
+          to={`/munro/${munro.smcid}/add-logs`}
         >
           Add to logs
-        </button>
+        </Link>
       </div>
-      <div className="border-t border-gray-200">
+      <div className="border-t border-gray-200 mt-3">
         <dl>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">SMC ID</dt>
@@ -61,7 +62,7 @@ const MunroProfile = ({
           </div>
           <div className="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
             <dt className="text-sm font-medium text-gray-500">
-              Difficult Rating
+              Difficulty Rating
             </dt>
             <dd className="mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
               Medium
@@ -69,8 +70,8 @@ const MunroProfile = ({
           </div>
         </dl>
       </div>
-      <div className="relative munroProfile">
-        <Map className="map" />
+      <div className="relative">
+        <Map className="munroProfile" featuredMunroId={munroId} />
       </div>
     </div>
   );

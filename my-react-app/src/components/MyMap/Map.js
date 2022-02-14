@@ -6,18 +6,45 @@ import {
   useState,
 } from 'react';
 
+import {
+  collection,
+  getDocs,
+  query,
+  where,
+} from 'firebase/firestore';
+
 import tt from '@tomtom-international/web-sdk-maps';
 
+import { useAuth } from '../../contexts/AuthContext';
+import { db } from '../../firebase';
 import munroData from '../Data/munroData';
 
 const Map = ({ className, onPopupClick, featuredMunroId }) => {
   const SCOTLAND = [-6, 57];
-
   const apiKey = process.env.REACT_APP_OPEN_WEATHER_KEY;
   const [map, setMap] = useState({});
   const [mapCenter, setMapCenter] = useState(SCOTLAND);
   const [mapZoom, setMapZoom] = useState(6);
   const mapElement = useRef();
+  const { currentUser } = useAuth();
+  const [completedMunros, setCompletedMunros] = useState([]);
+  const { uid } = currentUser ?? {};
+
+  useEffect(() => {
+    if (uid === undefined) {
+      return;
+    }
+    const queryRef = query(
+      collection(db, "completedMunros"),
+      where("uid", "==", uid)
+    );
+
+    const getCompletedMunros = async () => {
+      const data = await getDocs(queryRef);
+      setCompletedMunros(data.docs.map((values) => values.data().smcid));
+    };
+    getCompletedMunros();
+  }, [uid]);
 
   useEffect(() => {
     if (!featuredMunroId) return;
@@ -26,8 +53,6 @@ const Map = ({ className, onPopupClick, featuredMunroId }) => {
     setMapCenter([munro.latlng_lng, munro.latlng_lat]);
     setMapZoom(12);
   }, [featuredMunroId]);
-
-  console.log(mapCenter);
 
   useEffect(() => {
     //Initializes TomTom map with an id set to the 'map' and style, zoom and center position
@@ -148,14 +173,16 @@ const Map = ({ className, onPopupClick, featuredMunroId }) => {
     };
 
     munroData.forEach((munro) => {
-      const className = completedMunros.includes(munro.id)
-        ? "marker-munro-done"
-        : "marker-munro";
+      const isCompleted = completedMunros.includes(munro.smcid);
+      if (isCompleted) {
+        console.log("found a completed munro");
+      }
+      const className = isCompleted ? "marker-done" : "marker";
       addMarker({ className: className, ...munro });
     });
 
     return () => map.remove();
-  }, [apiKey, mapCenter, mapZoom, onPopupClick]);
+  }, [apiKey, mapCenter, mapZoom, onPopupClick, completedMunros]);
 
   return <>{map && <div ref={mapElement} className={className} />}</>;
 };
