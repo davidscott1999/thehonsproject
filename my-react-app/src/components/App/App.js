@@ -3,10 +3,6 @@ import './App.css';
 import { useState } from 'react';
 
 import {
-  updateEmail,
-  updatePassword,
-} from 'firebase/auth';
-import {
   BrowserRouter as Router,
   Route,
   Switch,
@@ -14,9 +10,13 @@ import {
 
 import { AuthProvider } from '../../contexts/AuthContext';
 import { Account } from '../Authentication/Account/Account';
+import { ContactForm } from '../Authentication/Account/ContactForm';
+import { UpdateEmail } from '../Authentication/Account/updateEmail';
+import { UpdatePassword } from '../Authentication/Account/updatePassword';
 import { Login } from '../Authentication/Login/Login';
 import { ResetPassword } from '../Authentication/PasswordReset/PasswordReset';
 import { Signup } from '../Authentication/Signup';
+import { Disclaimer } from '../Disclaimer/Disclaimer';
 import ErrorPage from '../Error/ErrorPage';
 import { FeatureCards } from '../FeatureCards/FeatureCards';
 import Footer from '../Footer/Footer';
@@ -28,7 +28,6 @@ import { AddLogs } from '../MunroLogs/AddLogs';
 import { ViewLogs } from '../MunroLogs/ViewLogs';
 import { Map } from '../MyMap/Map';
 import Navbar from '../Navbar/Navbar';
-import VerifyAccount from '../Verify/VerifyAccount';
 import PrivateRoute from './PrivateRoute';
 
 function App() {
@@ -50,17 +49,18 @@ function App() {
               </div>
             </PrivateRoute>
             <PrivateRoute path="/account" component={Account} />
-            <PrivateRoute path="/update-password" component={updatePassword} />
-            <PrivateRoute path="/update-email" component={updateEmail} />
+            <PrivateRoute path="/update-email" component={UpdateEmail} />
+            <PrivateRoute path="/update-password" component={UpdatePassword} />
             <PrivateRoute path="/view-logs" component={ViewLogs} />
-            <PrivateRoute path="/add-logs" component={AddLogs} />
+            <PrivateRoute path="/munro/:munroId/add-logs" component={AddLogs} />
+            <PrivateRoute path="/contact-us" component={ContactForm} />
+            <Route path="/disclaimer" component={Disclaimer} />
             <Route path="/munros" component={MunroList} />
             <Route path="/munro/:munroId" component={MunroProfile} />
             <Route path="/login" component={Login} />
             <Route path="/signup" component={Signup} />
             <Route path="/resetpassword" component={ResetPassword} />
             <Route path="/error" component={ErrorPage} />
-            <Route path="/verify" component={VerifyAccount} />
             <Route path="/safety" component={MunroSafety} />
           </Switch>
           <Footer />

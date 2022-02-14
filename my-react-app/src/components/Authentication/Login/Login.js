@@ -23,8 +23,6 @@ const Login = () => {
   const history = useHistory();
 
   const handleSubmit = (values) => {
-    console.log(values);
-
     const { email, password } = values;
 
     setLoading(true);

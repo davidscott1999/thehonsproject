@@ -11,13 +11,27 @@ const Account = () => {
   const history = useHistory();
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout, deleteAccount } = useAuth();
 
   // Added this to handle the submit of the form
   const handleLogout = () => {
     logout()
       .then(() => {
         history.push("/login");
+        setHasError(false);
+        console.log("Success");
+      })
+      .catch((error) => {
+        setHasError(true);
+        setErrorMessage(error.message);
+        console.log(error);
+      });
+  };
+
+  const handleDelete = () => {
+    deleteAccount()
+      .then(() => {
+        history.push("/signup");
         setHasError(false);
         console.log("Success");
       })
@@ -63,16 +77,26 @@ const Account = () => {
               </Link>
             </div>
             <div>
-              <Link
-                className="text-white text-medium text-center font-bold py-2 px-4 flex flex-col mt-4"
+              <button
+                className="text-black text-center mt-4 font-bold py-2 px-4 rounded-full flex flex-col"
+                to="/login"
                 onClick={handleLogout}
               >
                 Sign out
-              </Link>
+              </button>
+            </div>
+            <div>
+              <button
+                className=" text-black text-center mt-4 font-bold py-2 px-4 rounded-full flex flex-col"
+                to="/signup"
+                onClick={handleDelete}
+              >
+                Delete Account
+              </button>
             </div>
           </div>
-          <div className="text-center mt-3"></div>
         </div>
+        <div className="text-center mt-3"></div>
       </section>
     </div>
   );

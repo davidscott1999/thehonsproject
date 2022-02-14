@@ -6,10 +6,14 @@ import React, {
 
 import {
   createUserWithEmailAndPassword,
+  deleteUser,
   onAuthStateChanged,
+  sendEmailVerification,
   sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut,
+  updateEmail,
+  updatePassword,
 } from 'firebase/auth';
 
 import { auth } from '../firebase';
@@ -23,9 +27,14 @@ function useAuth() {
 function AuthProvider({ children }) {
   const [currentUser, setCurrentUser] = useState();
   const [loading, setLoading] = useState(true);
+  const user = auth.currentUser;
 
   function signup(email, password) {
     return createUserWithEmailAndPassword(auth, email, password);
+  }
+
+  function verifyEmail() {
+    return sendEmailVerification(auth);
   }
 
   function login(email, password) {
@@ -40,12 +49,16 @@ function AuthProvider({ children }) {
     return sendPasswordResetEmail(auth, email);
   }
 
-  function updateEmail(email) {
-    return currentUser.updateEmail(auth, email);
+  function emailUpdate(newEmail) {
+    return updateEmail(user, newEmail);
   }
 
-  function updatePassword(password) {
-    return currentUser.updatePassword(auth, password);
+  function passwordUpdate(newPassword) {
+    return updatePassword(user, newPassword);
+  }
+
+  function deleteAccount() {
+    return deleteUser(user);
   }
 
   useEffect(() => {
@@ -63,8 +76,10 @@ function AuthProvider({ children }) {
     signup,
     logout,
     resetPassword,
-    updateEmail,
-    updatePassword,
+    emailUpdate,
+    passwordUpdate,
+    verifyEmail,
+    deleteAccount,
   };
 
   return (
