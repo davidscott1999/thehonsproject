@@ -17,7 +17,7 @@ const contactUsCardRef = [
 const FeatureCards = ({ className }) => {
   return (
     <div className={className}>
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto">
         <Cards heading="Munros" image={munroCardRef}>
           <p>
             The Munros are the mountains in Scotland over 3000 feet high, with
@@ -38,7 +38,7 @@ const FeatureCards = ({ className }) => {
           <p>
             Contact Munro Baggers today, whatever your query and we'll get you
             the help you need. We look forward to hearing from you. Contact us
-            <a href="/contact"> here</a>.
+            <a href="/contact-us"> here</a>.
           </p>
         </Cards>
       </div>

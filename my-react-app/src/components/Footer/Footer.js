@@ -21,10 +21,9 @@ const Footer = () => (
                 <a href="/">App</a>
               </li>
               <li className="opacity-60">
-                <a href="/cookie-policy">Cookie Policy</a>
-              </li>
-              <li className="opacity-60">
-                <a href="/privacy-policy">Privacy Policy</a>
+                <a href="https://www.privacypolicygenerator.info/live.php?token=TdOZDKpjDPMA7hA20HJ95cGUx2x5hgmE">
+                  Privacy Policy
+                </a>
               </li>
             </ul>
           </div>
@@ -37,7 +36,7 @@ const Footer = () => (
                 <a href="https://www.walkhighlands.co.uk/">Walk Highlands</a>
               </li>
               <li className="opacity-60">
-                <a href="/faqs">FAQ's</a>
+                <a href="/safety">Mountain Safety</a>
               </li>
             </ul>
           </div>
