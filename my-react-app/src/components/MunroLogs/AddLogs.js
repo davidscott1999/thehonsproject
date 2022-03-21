@@ -24,6 +24,7 @@ const AddLogs = ({
 }) => {
   const [hasError, setHasError] = useState(false);
   const [errorMessage, setErrorMessage] = useState();
+
   const history = useHistory();
   const { currentUser } = useAuth();
   const { uid } = currentUser;
@@ -65,6 +66,7 @@ const AddLogs = ({
   const validate = Yup.object().shape({
     date: Yup.string().required("Required"),
     comment: Yup.string().required("Required"),
+    file: Yup.mixed().notRequired(),
   });
 
   return (
@@ -90,6 +92,7 @@ const AddLogs = ({
                 region: munro.region,
                 date: "",
                 comment: "",
+                file: undefined,
               }}
               validationSchema={validate}
             >
@@ -150,7 +153,7 @@ const AddLogs = ({
                 <div>
                   <ErrorMessage name="date" />
                 </div>
-                <label htmlFor="password">Comment:</label>
+                <label htmlFor="comment">Comment:</label>
                 <Field
                   id="Comment"
                   name="comment"
@@ -159,6 +162,16 @@ const AddLogs = ({
                 />
                 <div>
                   <ErrorMessage name="comment" />
+                </div>
+                <label htmlFor="file">Photograph:</label>
+                <Field
+                  id="File"
+                  name="file"
+                  type="file"
+                  className="w-full bg-white rounded-md border border-gray-300 focus:border-indigo-600 focus:ring-2 focus:ring-indigo-200 text-sm outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-150 ease-in-out"
+                />
+                <div>
+                  <ErrorMessage name="file" />
                 </div>
                 <button
                   className="text-white bg-gray-600 rounded-md border-0 mt-2 py-2 px-8 focus:outline-none hover:bg-indigo-600 text-lg w-full"

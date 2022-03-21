@@ -23,6 +23,7 @@ const Account = () => {
       })
       .catch((error) => {
         setHasError(true);
+        alert("Delete account successful. We hope you visit us again soon");
         setErrorMessage(error.message);
         console.log(error);
       });
@@ -37,6 +38,7 @@ const Account = () => {
       })
       .catch((error) => {
         setHasError(true);
+        alert("Delete account failed, please contact us");
         setErrorMessage(error.message);
         console.log(error);
       });

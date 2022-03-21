@@ -26,10 +26,12 @@ const UpdatePassword = () => {
       .then(() => {
         history.push("/account");
         setHasError(false);
+        alert("Password change successful");
         console.log("Success");
       })
       .catch((error) => {
         setHasError(true);
+        alert("You have to log in again, as your session has expired");
         setErrorMessage(error.message);
         console.log(error);
       });

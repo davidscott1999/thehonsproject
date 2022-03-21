@@ -22,16 +22,16 @@ const UpdateEmail = () => {
     const { newEmail } = values;
 
     setLoading(true);
-    console.log(newEmail, "got here");
     emailUpdate(newEmail)
       .then(() => {
-        console.log("got here 11111");
+        alert("You have successfully changed your email");
         history.push("/account");
         setHasError(false);
         console.log("Success");
       })
       .catch((error) => {
         setHasError(true);
+        alert("You have to sign in again, as your session has expired");
         setErrorMessage(error.message);
         console.log(error);
       });

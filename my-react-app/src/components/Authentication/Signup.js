@@ -28,7 +28,7 @@ const Signup = () => {
     setLoading(true);
     signup(email, password)
       .then(() => {
-        history.push("/account");
+        history.push("/");
         setHasError(false);
         console.log("Success");
       })

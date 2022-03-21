@@ -25,8 +25,6 @@ const ViewLogs = () => {
   const [completedMunros, setCompletedMunros] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
 
-  const completedMunrosCollection = collection(db, "completedMunros");
-
   useEffect(() => {
     if (uid === undefined) {
       return;
@@ -38,16 +36,16 @@ const ViewLogs = () => {
 
     const getCompletedMunros = async () => {
       const data = await getDocs(queryRef);
+      console.log(data);
       setCompletedMunros(
-        data.docs.map((values) => ({ uid, ...values.data() }))
+        data.docs.map((values) => ({ uid, ...values.data(), id: values.id }))
       );
     };
     getCompletedMunros();
   }, [uid]);
 
   const deleteMunro = async (munro) => {
-    const munroDoc = doc(completedMunrosCollection);
-    await deleteDoc(munroDoc);
+    await deleteDoc(doc(db, "completedMunros", munro.id));
   };
 
   return (
@@ -117,6 +115,7 @@ const ViewLogs = () => {
               <>
                 {completedMunros
                   .filter((munro) => {
+                    console.log(munro.id);
                     if (searchTerm === "") {
                       return munro;
                     } else if (
@@ -151,9 +150,10 @@ const ViewLogs = () => {
                         </td>
                         <td className="px-6 py-4 whitespace-nowrap">
                           <button
-                            onClick={(munro) => {
+                            onClick={() => {
                               console.log("onClick delete");
-                              deleteMunro();
+                              deleteMunro(munro);
+                              alert("Please refresh the page");
                               console.log("sucessful");
                             }}
                           >

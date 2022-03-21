@@ -52,10 +52,8 @@ const Forecast = ({ latitude, longitude }) => {
                 {Math.round(fToC(weatherInformation.current.temp) * 10) / 10}
                 &#176;C
               </li>
-              <li>Clouds : {weatherInformation.current.weather.clouds}%</li>
-              <li>
-                Visibility : {weatherInformation.current.weather.visibility}m
-              </li>
+              <li>Clouds : {weatherInformation.current.clouds}%</li>
+              <li>Visibility : {weatherInformation.current.visibility}m</li>
               <li>
                 Wind : {Math.round(weatherInformation.current.wind_speed)}mph,{" "}
                 {Compass.cardinalFromDegree(
@@ -81,10 +79,8 @@ const Forecast = ({ latitude, longitude }) => {
                 {Math.round(fToC(weatherInformation.daily[1].temp) * 10) / 10}
                 &#176;C
               </li>
-              <li>Clouds : {weatherInformation.daily[1].weather.clouds}%</li>
-              <li>
-                Visibility : {weatherInformation.daily[1].weather.visibility}m
-              </li>
+              <li>Clouds : {weatherInformation.daily[1].clouds}%</li>
+              <li>Visibility : {weatherInformation.daily[1].visibility}m</li>
               <li>
                 Wind : {Math.round(weatherInformation.daily[1].wind_speed)}mph,{" "}
                 {Compass.cardinalFromDegree(
@@ -93,6 +89,9 @@ const Forecast = ({ latitude, longitude }) => {
                 {Math.round(weatherInformation.daily[1].wind_gust)} mph gusts
               </li>
             </ul>
+            <a href="https://www.metoffice.gov.uk/weather/warnings-and-advice/uk-warnings">
+              UK weather warnings
+            </a>
           </div>
         </>
       )}

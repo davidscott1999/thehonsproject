@@ -45,7 +45,7 @@ function App() {
                 {munro && (
                   <MunroDetails className="munroDetails" munroId={munro} />
                 )}
-                <FeatureCards className="max-w-desktop" />1
+                <FeatureCards className="max-w-desktop" />
               </div>
             </PrivateRoute>
             <PrivateRoute path="/account" component={Account} />

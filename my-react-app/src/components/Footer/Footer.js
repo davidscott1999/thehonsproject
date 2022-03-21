@@ -21,6 +21,9 @@ const Footer = () => (
                 <a href="/">App</a>
               </li>
               <li className="opacity-60">
+                <a href="/contact-us">Contact Us</a>
+              </li>
+              <li className="opacity-60">
                 <a href="https://www.privacypolicygenerator.info/live.php?token=TdOZDKpjDPMA7hA20HJ95cGUx2x5hgmE">
                   Privacy Policy
                 </a>
