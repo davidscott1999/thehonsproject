@@ -6,6 +6,7 @@ const Navbar = () => {
       className="flex justify-between items-center h-21 bg-white text-black text-lg
     relative shadow-sm font-family: ui-serif"
       role="navigation"
+      aria-label="nav bar"
     >
       <div>
         <img

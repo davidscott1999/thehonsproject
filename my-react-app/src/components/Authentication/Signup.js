@@ -67,7 +67,11 @@ const Signup = () => {
                 Sign in to your Account
               </h1>
             </div>
-            <div className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0 rounded-md">
+            <div
+              role="form"
+              aria-label="signup form"
+              className="lg:w-3/6 xl:w-2/5 md:w-full bg-gray-200 p-8 flex flex-col lg:ml-auto w-full mt-10 lg:mt-0 rounded-md"
+            >
               <Formik
                 initialValues={{
                   email: "",
