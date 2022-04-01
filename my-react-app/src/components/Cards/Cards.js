@@ -2,7 +2,10 @@ import React from 'react';
 
 const Cards = ({ image, children, heading }) => {
   return (
-    <div className="rounded group overflow-hidden shadow-lg bg-gray-200 hover:bg-gray-300 duration-500 pb-4">
+    <div
+      className="rounded group overflow-hidden shadow-lg bg-gray-200 hover:bg-gray-300 duration-500 pb-4"
+      role="contentinfo"
+    >
       <img
         className="w-full h-56 object-cover transform group-hover:opacity-75 duration-500"
         src={image}
