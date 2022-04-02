@@ -9,8 +9,6 @@ import userEvent from '@testing-library/user-event';
 
 import { AddLogs } from './AddLogs';
 
-beforeAll(() =>)
-
 test("submitting the form calls onSubmit with munro details", () => {
   const onSubmit = jest.fn();
   render(<AddLogs onSubmit={onSubmit} />);

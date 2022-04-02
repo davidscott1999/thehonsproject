@@ -18,7 +18,7 @@ const FeatureCards = ({ className }) => {
   return (
     <div className={className}>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 md:gap-8 mx-auto">
-        <Cards heading="Munros" image={munroCardRef}>
+        <Cards role="card" heading="Munros" image={munroCardRef}>
           <p>
             The Munros are the mountains in Scotland over 3000 feet high, with
             there being a total of 282 Munros across Scotland. Your challenge

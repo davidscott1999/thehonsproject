@@ -20,9 +20,9 @@ describe("<Cards>", () => {
     expect(screen.getByRole("contentInfo")).toHaveAttribute("image");
   });
 
-  test("heading prop sets text content of progress bar", () => {
+  test("heading prop sets text content of info card", () => {
     render(<Cards heading="heading" />);
 
-    expect(screen.getByRole("navigation")).toHaveTextContent("heading");
+    expect(screen.getByRole("contentInfo")).toHaveTextContent("heading");
   });
 });

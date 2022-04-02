@@ -1,22 +1,23 @@
-import { useState } from "react"
+import { useState } from 'react';
 
-function DropDownMenu ({options}) {
-    const [dropdown, setDropDown] = useState('Please Select')
+function DropDownMenu({ options }) {
+  const [dropdown, setDropDown] = useState("Please Select");
 
-    return(
-        <select
-        value={dropdown}
-        onChange={(e) => {
-            setDropDown(e.target.value)
-        }}
-        >
-            <option value="Please select">Please Select</option>
+  return (
+    <select
+      role="menu"
+      value={dropdown}
+      onChange={(e) => {
+        setDropDown(e.target.value);
+      }}
+    >
+      <option value="Please select">Please Select</option>
 
-            {options.map((option) => (
-                <option value={option}>{option}</option>
-            ))}
-        </select>
-    );
+      {options.map((option) => (
+        <option value={option}>{option}</option>
+      ))}
+    </select>
+  );
 }
 
-export {DropDownMenu}
+export { DropDownMenu };

@@ -13,7 +13,7 @@ const MunroDetails = ({ className, munroId }) => {
     munro;
 
   return (
-    <div className={className}>
+    <div className={className} role="contentinfo">
       <div className="bg-gray-600 bg-opacity-80 rounded-md p-6 w-70 text-white table-fixed">
         <ul className="text-sm">
           <li className="text-lg font-bold">{name}</li>

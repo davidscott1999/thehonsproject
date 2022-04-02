@@ -34,7 +34,6 @@ const AddLogs = ({
   const completedMunrosCollection = collection(db, "completedMunros");
 
   const onSubmit = async (values, actions) => {
-    // const {resetForm} = actions;
     if (updatingCollection) {
       return;
     }
@@ -46,9 +45,6 @@ const AddLogs = ({
     await addDoc(completedMunrosCollection, completedMunroDto)
       .then(() => {
         setUpdatingCollection(false);
-        // redirect or show a notification that data has been added
-        // clear the form values
-        // resetForm();
       })
 
       .then(() => {
