@@ -74,13 +74,7 @@ const Forecast = ({ latitude, longitude }) => {
               <li>
                 Weather : {weatherInformation.daily[1].weather[0].description}
               </li>
-              <li>
-                Temp : {Math.round(weatherInformation.daily[1].temp)}&#176;F /{" "}
-                {Math.round(fToC(weatherInformation.daily[1].temp) * 10) / 10}
-                &#176;C
-              </li>
               <li>Clouds : {weatherInformation.daily[1].clouds}%</li>
-              <li>Visibility : {weatherInformation.daily[1].visibility}m</li>
               <li>
                 Wind : {Math.round(weatherInformation.daily[1].wind_speed)}mph,{" "}
                 {Compass.cardinalFromDegree(
